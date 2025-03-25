@@ -36,4 +36,13 @@ public class FoodController {
                 .collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        foodService.findById(id).ifPresent(
+                food -> {
+                    foodService.delete(food);
+                }
+        );
+    }
+
 }

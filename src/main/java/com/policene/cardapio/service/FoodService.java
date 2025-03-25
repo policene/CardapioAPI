@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FoodService {
@@ -23,6 +24,14 @@ public class FoodService {
 
     public void save(Food food) {
         iFoodRepository.save(food);
+    }
+
+    public void delete(Food food) {
+        iFoodRepository.delete(food);
+    }
+
+    public Optional<Food> findById(Long id) {
+        return Optional.of(iFoodRepository.findById(id).get());
     }
 
 }
